@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Patient List</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Saved Patient Details</h1>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Mobile</th>
+      </tr>
+      {% for patient in patients %}
+      <tr>
+        <td>{{ patient.id }}</td>
+        <td>{{ patient.name }}</td>
+        <td>{{ patient.age }}</td>
+        <td>{{ patient.gender }}</td>
+        <td>{{ patient.mobile }}</td>
+        <td>
+          <a
+            href="/delete/{{ patient.id }}"
+            onclick="return confirm('Are you sure?');"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    <br />
+    <a href="/">Go Back</a>
+  </body>
+</html>
